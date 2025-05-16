@@ -46,7 +46,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         libgl1 \
         libglib2.0-0 \
-        libgomp1 && \
+        libgomp1 \
+        psutil \
+        libreoffice fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy fonts-arphic-ukai fonts-arphic-uming fonts-noto-cjk libreoffice-java-common openjdk-17-jdk-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -58,6 +60,7 @@ RUN apt-get update && \
 COPY entrypoint.sh /app/entrypoint.sh
 COPY magic-pdf.json /root/magic-pdf.json
 COPY app.py /app/app.py
+COPY office_to_pdf.py /app/venv/lib/python3.10/site-packages/magic_pdf/utils/office_to_pdf.py
 
 # Expose the port that FastAPI will run on
 EXPOSE 8000

@@ -178,7 +178,7 @@ def encode_image(image_path: str) -> str:
 )
 async def file_parse(
     file: UploadFile = None,
-    file_path: str = Form(None),
+    file_path: str = None,
     parse_method: str = Form("auto"),
     is_json_md_dump: bool = Form(False),
     output_dir: str = Form("output"),
